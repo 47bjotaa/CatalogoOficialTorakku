@@ -242,7 +242,7 @@
 </footer>
 
 <script>
-// BASE DE COSTOS (Lo que tú pagas)
+// BASE DE COSTOS (Lo que tú pagas) - Se mantiene igual
 const costosBase = {
     "Filtro de Aire 313": 15000, "Filtro de combustible 313": 18500, "Filtro de aceite 313": 7500,
     "Filtro de polvo 313": 12000, "Valvula de vacio turbo 313": 45000, "Correa de ventilador 313": 15000,
@@ -252,31 +252,106 @@ const costosBase = {
     "Filtro combustible 515-516": 21000, "Filtro aire 515-516": 19000, "Filtro racor 515-516": 15000,
     "Turbo 515-516": 680000, "Bomba agua 515-516": 85000, "Radiador 515-516": 145000,
     "Pastillas freno 515-516": 32000, "Masa delantera 515-516": 110000
-    // El sistema calculará automáticamente el 30% sobre cualquier nombre que coincida aquí.
 };
 
+// NUEVA LISTA DE PRODUCTOS MEZCLADA Y CON IMÁGENES CORRECTAS
 const productos = [
-    {modelo:"313",nombre:"Filtro de Aire 313",imagen:"./img/filtro-aire-313.png"},
+    {modelo:"313",nombre:"Filtro de Aire 313",imagen:"img/filtro-aire-313.png"},
     {modelo:"313",nombre:"Filtro de combustible 313",imagen:"img/filtro-combustible-313.jpg"},
     {modelo:"313",nombre:"Filtro de aceite 313",imagen:"img/filtro-aceite-313.jpg"},
     {modelo:"313",nombre:"Filtro de polvo 313",imagen:"img/filtro-polvo-313.jpg"},
     {modelo:"313",nombre:"Valvula de vacio turbo 313",imagen:"img/valvula-vacio-turbo-313.jpg"},
     {modelo:"313",nombre:"Correa de ventilador 313",imagen:"img/correa-ventilador-313.jpg"},
     {modelo:"313",nombre:"Tensor de correa 313",imagen:"img/tensor-correa-313.jpg"},
+    {modelo:"313",nombre:"Rodillos de correa 313",imagen:"img/rodillos-correa-313.jpg"},
     {modelo:"313",nombre:"Viscoso 313",imagen:"img/viscoso-313.jpg"},
     {modelo:"313",nombre:"Bomba de agua 313",imagen:"img/bomba-agua-313.jpg"},
     {modelo:"313",nombre:"Radiador 313",imagen:"img/radiador-313.jpg"},
     {modelo:"313",nombre:"Amortiguadores Traseros 313",imagen:"img/amortiguadores-traseros-313.jpg"},
+    {modelo:"313",nombre:"Amortiguadores Delanteros 313",imagen:"img/amortiguadores-delanteros-313.jpg"},
+    {modelo:"313",nombre:"Disco de frenos delanteros 313",imagen:"img/disco-freno-delantero-313.jpg"},
     {modelo:"313",nombre:"Pastillas de frenos delanteros 313",imagen:"img/pastillas-freno-delantero-313.jpg"},
+    {modelo:"313",nombre:"Pastillas de frenos traseros 313",imagen:"img/pastillas-freno-trasero-313.jpg"},
+    {modelo:"313",nombre:"Bandeja de suspencion delantera derecha 313",imagen:"img/bandeja-der-313.jpg"},
+    {modelo:"313",nombre:"Bandeja de suspencion delantera izquierda 313",imagen:"img/bandeja-izq-313.jpg"},
+    {modelo:"313",nombre:"Conjunto de embrague 313",imagen:"img/embrague-313.jpg"},
+    {modelo:"313",nombre:"Volante 313",imagen:"img/volante-313.jpg"},
+    {modelo:"313",nombre:"Culata 313",imagen:"img/culata-313.jpg"},
+    {modelo:"313",nombre:"Kit de empaquetadura de motor completo 313",imagen:"img/kit-empaquetadura-313.jpg"},
+    {modelo:"313",nombre:"Intercooler 313",imagen:"img/intercooler-313.jpg"},
     {modelo:"313",nombre:"Turbo 313",imagen:"img/turbo-313.jpg"},
+    {modelo:"313",nombre:"Manguera de intercooler 313",imagen:"img/manguera-intercooler-313.jpg"},
+    {modelo:"313",nombre:"Bujia encandescente 313",imagen:"img/bujia-313.jpg"},
+    {modelo:"313",nombre:"Valvula reguladora de presion del riel 313",imagen:"img/valvula-riel-313.jpg"},
+    {modelo:"313",nombre:"Perno de fijacion del inyector 313",imagen:"img/perno-inyector-313.jpg"},
+    {modelo:"313",nombre:"Inyectores 313",imagen:"img/inyectores-313.jpg"},
+    {modelo:"313",nombre:"Golillas de inyector 313",imagen:"img/golilla-inyector-313.jpg"},
+    {modelo:"313",nombre:"Plumilla limpia parabrisas 313",imagen:"img/plumilla-313.jpg"},
+    {modelo:"313",nombre:"Bujes barra estabilizadora trasera 313",imagen:"img/buje-barra-313.jpg"},
+    {modelo:"313",nombre:"Axiales de direccion 313",imagen:"img/axial-direccion-313.jpg"},
+    {modelo:"313",nombre:"Terminales de direccion 313",imagen:"img/terminal-direccion-313.png"},
+    {modelo:"313",nombre:"Bieleta barra estabilizadora delantera 313",imagen:"img/bieleta-313.jpg"},
+    {modelo:"313",nombre:"Termostato 313",imagen:"img/termostato-313.jpg"},
+    {modelo:"313",nombre:"Cilindro emisor de embrague 313",imagen:"img/cilindro-embrague-313.jpg"},
+    {modelo:"313",nombre:"Rodamiento de empuje 313",imagen:"img/rodamiento-empuje-313.jpg"},
+    {modelo:"313",nombre:"Bomba de aceite 313",imagen:"img/bomba-aceite-313.jpg"},
+    {modelo:"313",nombre:"Enfriador de aceite 313",imagen:"img/enfriador-aceite-313.jpg"},
+    {modelo:"313",nombre:"Bomba de calefaccion 313",imagen:"img/bomba-calefaccion-313.jpg"},
     {modelo:"515",nombre:"Filtro combustible 515-516",imagen:"img/filtro-combustible-515.jpg"},
     {modelo:"515",nombre:"Filtro aire 515-516",imagen:"img/filtro-aire-515.jpg"},
     {modelo:"515",nombre:"Filtro racor 515-516",imagen:"img/filtro-racor-515.jpg"},
+    {modelo:"515",nombre:"Filtro aceite 515-516",imagen:"img/filtro-aceite-515.jpg"},
+    {modelo:"515",nombre:"Filtro aire acondicionado 515-516",imagen:"img/filtro-polvo-515.jpg"},
+    {modelo:"515",nombre:"Valvula vacio turbo 515-516",imagen:"img/valvula-turbo-515.jpg"},
+    {modelo:"515",nombre:"Correa ventilador 515-516",imagen:"img/correa-515.jpg"},
+    {modelo:"515",nombre:"Tensor correa 515-516",imagen:"img/tensor-515.jpg"},
+    {modelo:"515",nombre:"Rodillos correa 515-516",imagen:"img/rodillos-515.jpg"},
+    {modelo:"515",nombre:"Viscoso 515-516",imagen:"img/viscoso-515.jpg"},
     {modelo:"515",nombre:"Bomba agua 515-516",imagen:"img/bomba-agua-515.jpg"},
     {modelo:"515",nombre:"Radiador 515-516",imagen:"img/radiador-515.jpg"},
+    {modelo:"515",nombre:"Amortiguadores delanteros 515-516",imagen:"img/amortiguadores-delanteros-515.jpg"},
+    {modelo:"515",nombre:"Amortiguadores traseros 515-516",imagen:"img/amortiguadores-traseros-515.jpg"},
+    {modelo:"515",nombre:"Disco freno delantero 515-516",imagen:"img/disco-delantero-515.jpg"},
+    {modelo:"515",nombre:"Disco freno trasero 515-516",imagen:"img/disco-trasero-515.jpg"},
     {modelo:"515",nombre:"Pastillas freno 515-516",imagen:"img/pastillas-515.jpg"},
+    {modelo:"515",nombre:"Balatas freno mano 515-516",imagen:"img/balatas-515.jpg"},
+    {modelo:"515",nombre:"Bandeja suspension 515-516",imagen:"img/bandeja-515.jpg"},
+    {modelo:"515",nombre:"Bomba direccion 515-516",imagen:"img/bomba-direccion-515.jpg"},
+    {modelo:"515",nombre:"Conjunto embrague 515-516",imagen:"img/embrague-515.jpg"},
+    {modelo:"515",nombre:"Volante 515-516",imagen:"img/volante-515.jpg"},
+    {modelo:"515",nombre:"Culata 515-516",imagen:"img/culata-515.jpg"},
+    {modelo:"515",nombre:"Kit empaquetadura motor 515-516",imagen:"img/kit-empaquetadura-515.jpg"},
+    {modelo:"515",nombre:"Intercooler 515-516",imagen:"img/intercooler-515.jpg"},
     {modelo:"515",nombre:"Turbo 515-516",imagen:"img/turbo-515.jpg"},
-    {modelo:"515",nombre:"Masa delantera 515-516",imagen:"img/masa-delantera-515.jpg"}
+    {modelo:"515",nombre:"Manguera intercooler 515-516",imagen:"img/manguera-515.jpg"},
+    {modelo:"515",nombre:"Bujia incandescente 515-516",imagen:"img/bujia-515.jpg"},
+    {modelo:"515",nombre:"Valvula reguladora riel 515-516",imagen:"img/valvula-riel-515.jpg"},
+    {modelo:"515",nombre:"Inyectores 515-516",imagen:"img/inyectores-515.jpg"},
+    {modelo:"515",nombre:"Golilla inyector 515-516",imagen:"img/golilla-515.jpg"},
+    {modelo:"515",nombre:"Perno fijacion inyector 515-516",imagen:"img/perno-inyector-515.jpg"},
+    {modelo:"515",nombre:"Plumilla limpia parabrisas 515-516",imagen:"img/plumilla-515.jpg"},
+    {modelo:"515",nombre:"Buje barra estabilizadora trasero 515-516",imagen:"img/buje-515.jpg"},
+    {modelo:"515",nombre:"Axiales direccion 515-516",imagen:"img/axial-515.jpg"},
+    {modelo:"515",nombre:"Terminal direccion 515-516",imagen:"img/terminal-515.jpg"},
+    {modelo:"515",nombre:"Buje bieleta estabilizadora 515-516",imagen:"img/bieleta-515.jpg"},
+    {modelo:"515",nombre:"Multiple admision 515-516",imagen:"img/multiple-515.jpg"},
+    {modelo:"515",nombre:"Electrovalvula turbo 515-516",imagen:"img/electrovalvula-515.jpg"},
+    {modelo:"515",nombre:"Electrovalvula egr 515-516",imagen:"img/egr-515.jpg"},
+    {modelo:"515",nombre:"Termostato 515-516",imagen:"img/termostato-515.jpg"},
+    {modelo:"515",nombre:"Compresor aire acondicionado 515-516",imagen:"img/compresor-515.jpg"},
+    {modelo:"515",nombre:"Masa delantera 515-516",imagen:"img/masa-delantera-515.jpg"},
+    {modelo:"515",nombre:"Masa trasera 515-516",imagen:"img/masa-trasera-515.jpg"},
+    {modelo:"515",nombre:"Cilindro emisor embrague 515-516",imagen:"img/cilindro-515.jpg"},
+    {modelo:"515",nombre:"Rodamiento empuje 515-516",imagen:"img/rodamiento-515.jpg"},
+    {modelo:"515",nombre:"Kit distribucion cadena 515-516",imagen:"img/distribucion-515.jpg"},
+    {modelo:"515",nombre:"Bomba aceite 515-516",imagen:"img/bomba-aceite-515.jpg"},
+    {modelo:"515",nombre:"Enfriador aceite 515-516",imagen:"img/enfriador-515.jpg"},
+    {modelo:"515",nombre:"Porta filtro combustible 515-516",imagen:"img/porta-filtro-515.jpg"},
+    {modelo:"515",nombre:"Tapa valvula 515-516",imagen:"img/tapa-valvula-515.jpg"},
+    {modelo:"515",nombre:"Taques 515-516",imagen:"img/taques-515.jpg"},
+    {modelo:"515",nombre:"Chupador aceite 515-516",imagen:"img/chupador-515.jpg"},
+    {modelo:"515",nombre:"Deposito refrigerante 515-516",imagen:"img/deposito-515.jpg"},
+    {modelo:"515",nombre:"Bomba calefaccion 515-516",imagen:"img/bomba-calefaccion-515.jpg"}
 ];
 
 function generarCatalogo() {
@@ -311,7 +386,7 @@ function verProducto(nombre, imagen) {
     
     // Configurar el link de WhatsApp
     const mensaje = encodeURIComponent(`Hola Torakku, me interesa el repuesto: ${nombre} (${precioMostrado})`);
-    document.getElementById("btnWspDinamico").href = `https://wa.me/56989063529?text=${mensaje}`;
+    document.getElementById("btnWspDinamico").href = `https://wa.me/56943592844?text=${mensaje}`; // Usando el número del footer
     
     modal.style.display = "flex";
 }
@@ -346,4 +421,3 @@ window.onload = () => {
 </script>
 </body>
 </html>
-
